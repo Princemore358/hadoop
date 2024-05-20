@@ -1,0 +1,14 @@
+in master go to hdfs-site.xml
+add property
+
+<property>
+<name>dfs.hosts.exclude</name>
+<value>/usr/local/hadoop/exclude/hosts.exclude</value>
+</property>
+
+go to /usr/local/hadoop
+mkdir exclude
+cd exclude
+nano hosts.exclude
+enter the datanode name which want to dicommission
+hdfs dfsadmin -refreshNodes
