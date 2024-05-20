@@ -1,0 +1,16 @@
+create a WordCount.java file
+paste the  wordcount code in that file
+
+echo $(hadoop classpath)
+export HADOOP_CLASSPATH=$(hadoop classpath)
+javac -classpath $HADOOP_CLASSPATH WordCount.java
+jar cf wc.jar WordCount*.class
+nano words.txt
+hdfs dfs -mkdir /wordcount
+hdfs dfs -mkdir /wordcount/input
+hdfs dfs -put words.txt /wordcount/input
+hadoop jar wc.jar WordCount /wordcount/input /wordcount/output
+
+cd $HADOOP_HOME/etc/hadoop
+nano mapred-site.xml
+edit full path > HADOOP_HOME
